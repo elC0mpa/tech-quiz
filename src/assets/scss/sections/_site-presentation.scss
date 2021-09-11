@@ -1,0 +1,26 @@
+.site-presentation {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../images/1.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 84%, 0% 100%);
+  &__header-container {
+    top: 30%;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 80rem;
+  }
+  &__header {
+    font-size: 5rem;
+    letter-spacing: 0.5rem;
+    text-align: center;
+  }
+  &__secondary-info {
+    font-size: xx-large;
+  }
+}

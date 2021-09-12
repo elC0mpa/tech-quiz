@@ -1,12 +1,11 @@
 .site-presentation {
   width: 100vw;
   height: 100vh;
-  background-image: url("../../images/1.jpg");
+  background-image: url("../../images/7.jpg");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: bottom;
   background-size: cover;
   position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 84%, 0% 100%);
   &__header-container {
     top: 30%;
     left: 50%;
@@ -16,11 +15,36 @@
     max-width: 80rem;
   }
   &__header {
+    // background-image: linear-gradient(
+    //   to right,
+    //   red,
+    //   magenta,
+    //   cyan,
+    //   green,
+    //   yellow,
+    //   indigo,
+    //   orange
+    // );
+    background-color: transparentize($color: black, $amount: 0.2);
+    background-clip: text;
+    color: transparent;
     font-size: 5rem;
     letter-spacing: 0.5rem;
     text-align: center;
   }
   &__secondary-info {
     font-size: xx-large;
+  }
+  &__button-container {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  &__button {
+    width: 100%;
+    max-width: 25rem;
+    margin: 0 auto;
+    background-color: transparentize($color: white, $amount: 0.3);
+    text-transform: uppercase;
   }
 }

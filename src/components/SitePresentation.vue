@@ -8,17 +8,31 @@
           Take a quiz and test your knowledge about any tech topic!!!
         </span>
       </h1>
+      <div class="site-presentation__button-container">
+        <button
+          class="site-presentation__button basic-button"
+          @click="scrollToQuizzesSection"
+        >
+          Take a quiz
+        </button>
+      </div>
     </div>
   </div>
 </template>
-// :src="require(`../../assets/imgs/${avatar.filename}`)"
+
 <script>
 import { reactive, toRefs } from "@vue/reactivity";
 export default {
   name: "SitePresentation",
   setup() {
     const data = reactive({});
-    return { ...toRefs(data) };
+    const scrollToQuizzesSection = () => {
+      window.scrollTo({
+        top: window.innerHeight,
+        behavior: "smooth",
+      });
+    };
+    return { ...toRefs(data), scrollToQuizzesSection };
   },
 };
 </script>

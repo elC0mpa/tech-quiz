@@ -1,0 +1,11 @@
+.basic-button {
+  border-radius: 2rem;
+  transition: all 0.5s;
+  font-size: 2rem;
+  padding: 1.5rem;
+  cursor: pointer;
+  &:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0rem 0.5rem 1rem black;
+  }
+}

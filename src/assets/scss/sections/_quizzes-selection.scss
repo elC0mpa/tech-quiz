@@ -1,8 +1,16 @@
 .quizzes-selection {
   width: 100vw;
   height: 100vh;
-  background-image: url("../../images/6.jpg");
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: cover;
+  margin-top: 2rem;
+  &__main-text {
+    font-size: xx-large;
+    text-align: center;
+  }
+  &__container {
+    width: 80%;
+    margin: 2rem auto 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 0.5rem;
+  }
 }

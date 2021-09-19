@@ -5,7 +5,10 @@
   align-items: center;
   height: 300px;
   cursor: pointer;
-  background-image: linear-gradient(to right bottom, indigo, tomato);
+  background-position: center;
+  background-blend-mode: darken;
+  background-repeat: no-repeat;
+  background-size: cover;
   &__svg {
     width: 4.8rem;
   }

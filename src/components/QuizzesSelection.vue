@@ -24,33 +24,43 @@ export default {
       quizzes: [
         {
           topic: "Linux",
+          backgroundImage: "linux-background.jpg",
         },
-        // {
-        //   topic: "DevOps",
-        // },
+        {
+          topic: "DevOps",
+          backgroundImage: "devops-background.jpg",
+        },
+        {
+          topic: "Bash",
+          backgroundImage: "bash-background.jpg",
+        },
         {
           topic: "JavaScript",
+          backgroundImage: "javascript-background.jpg",
         },
         {
           topic: "PHP",
+          backgroundImage: "php-background.jpeg",
         },
-        // {
-        //   topic: "Bash",
-        // },
         {
           topic: "HTML",
+          backgroundImage: "html5-background.png",
         },
         {
           topic: "Docker",
+          backgroundImage: "docker-background.png",
         },
         {
           topic: "Kubernetes",
+          backgroundImage: "kubernetes-background.png",
         },
         {
           topic: "WordPress",
+          backgroundImage: "wordpress-background.jpeg",
         },
         {
           topic: "Laravel",
+          backgroundImage: "laravel-background.jpg",
         },
       ],
     });

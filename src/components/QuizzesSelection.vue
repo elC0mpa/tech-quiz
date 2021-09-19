@@ -29,14 +29,8 @@ export default {
         //   topic: "DevOps",
         // },
         {
-          topic: "Python",
-        },
-        {
           topic: "JavaScript",
         },
-        // {
-        //   topic: "Networking",
-        // },
         {
           topic: "PHP",
         },
@@ -44,7 +38,7 @@ export default {
         //   topic: "Bash",
         // },
         {
-          topic: "HTML5",
+          topic: "HTML",
         },
         {
           topic: "Docker",
@@ -57,9 +51,6 @@ export default {
         },
         {
           topic: "Laravel",
-        },
-        {
-          topic: "Cloud",
         },
       ],
     });

@@ -1,10 +1,11 @@
 .site-presentation {
   width: 100vw;
   height: 100vh;
-  background-image: url("../../images/7.jpg");
+  background-image: linear-gradient(gray, gray), url("../../images/7.jpg");
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: cover;
+  background-blend-mode: darken;
   position: relative;
   &__header-container {
     top: 30%;
@@ -15,19 +16,9 @@
     max-width: 80rem;
   }
   &__header {
-    // background-image: linear-gradient(
-    //   to right,
-    //   red,
-    //   magenta,
-    //   cyan,
-    //   green,
-    //   yellow,
-    //   indigo,
-    //   orange
-    // );
-    background-color: transparentize($color: black, $amount: 0.2);
-    background-clip: text;
-    color: transparent;
+    // background-color: transparentize($color: black, $amount: 0.2);
+    // background-clip: text;
+    color: white;
     font-size: 5rem;
     letter-spacing: 0.5rem;
     text-align: center;

@@ -8,7 +8,7 @@
       class="card-topic__svg"
       :src="require(`../assets/svgs/${quiz.topic.toLowerCase()}.svg`)"
     />
-    <p class="card-topic__text" style="color: white">
+    <p class="card-topic__text">
       {{ quiz.topic }}
     </p>
   </div>

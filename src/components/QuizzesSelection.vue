@@ -73,9 +73,6 @@ export default {
       store.commit("setTopic", quiz.topic);
       router.push({
         name: "Quiz",
-        params: {
-          topic: quiz.topic,
-        },
       });
     };
     return { ...toRefs(data), goToQuiz };

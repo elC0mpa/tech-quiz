@@ -6,12 +6,15 @@
         v-for="(quiz, index) in quizzes"
         :key="index"
         :quiz="quiz"
+        @click="goToQuiz(quiz)"
       ></card-topic>
     </div>
   </div>
 </template>
 
 <script>
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 import { reactive, toRefs } from "@vue/reactivity";
 import CardTopic from "./CardTopic.vue";
 export default {
@@ -64,7 +67,18 @@ export default {
         },
       ],
     });
-    return { ...toRefs(data) };
+    const store = useStore();
+    const router = useRouter();
+    const goToQuiz = (quiz) => {
+      store.commit("setTopic", quiz.topic);
+      router.push({
+        name: "Quiz",
+        params: {
+          topic: quiz.topic,
+        },
+      });
+    };
+    return { ...toRefs(data), goToQuiz };
   },
 };
 </script>

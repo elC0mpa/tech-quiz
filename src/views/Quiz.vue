@@ -1,16 +1,28 @@
 <template>
-  <div class="quiz"></div>
+  <div class="quiz">
+    <quiz-header></quiz-header>
+  </div>
 </template>
 
 <script>
 import { reactive, toRefs } from "@vue/reactivity";
+import { useStore } from "vuex";
+import QuizHeader from "../components/QuizHeader.vue";
+
 export default {
   name: "Quiz",
+  components: {
+    QuizHeader,
+  },
   setup() {
-    const data = reactive({
+    const store = useStore();
+    const state = reactive({
       isLoading: true,
     });
-    return { ...toRefs(data) };
+    store.dispatch("getQuestions").then(() => {
+      state.isLoading = false;
+    });
+    return { ...toRefs(state) };
   },
 };
 </script>

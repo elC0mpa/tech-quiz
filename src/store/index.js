@@ -7,6 +7,7 @@ export default createStore({
     QUESTIONS: [],
     ANSWERS: [],
     ACTUAL_QUESTION: 0,
+    TOTAL_QUESTIONS: 0,
   },
   mutations: {
     setTopic(state, value) {
@@ -14,6 +15,9 @@ export default createStore({
     },
     setQuestions(state, value) {
       state.QUESTIONS = [...value];
+    },
+    setTotalQuestions(state, value) {
+      state.TOTAL_QUESTIONS = value;
     },
     addAnswer(state, answer) {
       state.ANSWERS.push(answer);
@@ -28,6 +32,7 @@ export default createStore({
             `questions?limit=15&tags=${state.state.TOPIC.toLowerCase()}`
           );
           state.commit("setQuestions", data);
+          state.commit("setTotalQuestions", data.length);
           resolve(data);
         } catch (error) {
           reject(error);
@@ -41,6 +46,15 @@ export default createStore({
     },
     actualQuestion(state) {
       return state.QUESTIONS[state.ACTUAL_QUESTION];
+    },
+    topic(state) {
+      return state.TOPIC;
+    },
+    totalQuestions(state) {
+      return state.TOTAL_QUESTIONS;
+    },
+    cuestionCount(state) {
+      return state.ACTUAL_QUESTION;
     },
   },
 });

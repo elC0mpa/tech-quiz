@@ -1,0 +1,13 @@
+.quiz-header {
+  &__progress-bar-content {
+    display: flex;
+    justify-content: space-between;
+    > div {
+      display: flex;
+      align-items: end;
+    }
+  }
+  &__info {
+    font-size: 2.5rem;
+  }
+}

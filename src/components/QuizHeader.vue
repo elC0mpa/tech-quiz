@@ -4,7 +4,7 @@
       <div class="quiz-header__progress-bar-content">
         <div>
           <img
-            class="card-topic__svg"
+            class="quiz-header__svg"
             :src="require(`../assets/svgs/${topic.toLowerCase()}.svg`)"
           />
           <span class="quiz-header__info">{{ topic }}</span>

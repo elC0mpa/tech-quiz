@@ -44,3 +44,26 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.quiz-header {
+  &__progress-bar-content {
+    display: flex;
+    justify-content: space-between;
+    > div {
+      display: flex;
+      align-items: end;
+      margin-bottom: 0.5rem;
+      :first-child {
+        margin-right: 1rem;
+      }
+    }
+  }
+  &__info {
+    font-size: 2.5rem;
+  }
+  &__svg {
+    height: 3.5rem;
+  }
+}
+</style>

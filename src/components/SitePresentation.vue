@@ -36,3 +36,47 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.site-presentation {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(gray, gray), url("../assets/images/7.jpg");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  background-blend-mode: darken;
+  position: relative;
+  &__header-container {
+    top: 30%;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 80rem;
+  }
+  &__header {
+    // background-color: transparentize($color: black, $amount: 0.2);
+    // background-clip: text;
+    color: white;
+    font-size: 5rem;
+    letter-spacing: 0.5rem;
+    text-align: center;
+  }
+  &__secondary-info {
+    font-size: xx-large;
+  }
+  &__button-container {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  &__button {
+    width: 100%;
+    max-width: 25rem;
+    margin: 0 auto;
+    background-color: transparentize($color: white, $amount: 0.3);
+    text-transform: uppercase;
+  }
+}
+</style>

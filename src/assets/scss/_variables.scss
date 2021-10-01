@@ -1,4 +1,21 @@
+$light-color: #fcfcfc;
+
+$tertiary-color: #0fc9e7;
+
+$secondary-color: #3186b2;
+
+$primary-color: #4756ca;
+
 $topic-text-color: white;
-$hard-color: orangered;
-$medium-color: green;
-$easy-color: blue;
+
+$question-color: $primary-color;
+
+$quiz-background-color: white;
+$quiz-header-info-color: $primary-color;
+$answer-item-background: transparentize($primary-color, 0.8);
+$answer-border-color: $secondary-color;
+$answer-text-color: $primary-color;
+
+$hard-color: $primary-color;
+$medium-color: $secondary-color;
+$easy-color: $tertiary-color;

@@ -1,6 +1,6 @@
 <template>
   <div class="quiz-actions">
-    <button class="quiz-actions__jump">Skip</button>
+    <button class="quiz-actions__skip">Skip</button>
     <button
       @click="nextQuestion"
       :disabled="!answerSelected"
@@ -39,16 +39,23 @@ export default {
   > button {
     width: 12rem;
     height: 5rem;
-    background-color: $answer-item-background;
     font-weight: bold;
     font-size: large;
-    color: $answer-text-color;
-    border: 2px solid $answer-border-color;
     border-radius: 1rem;
     cursor: pointer;
     &:disabled {
       opacity: 0.4;
     }
+  }
+  &__next {
+    background-color: $answer-item-background-selected;
+    color: $answer-text-color-selected;
+    border: 2px solid $answer-border-color-selected;
+  }
+  &__skip {
+    background-color: $answer-item-background;
+    color: $answer-text-color;
+    border: 2px solid $answer-border-color;
   }
 }
 </style>

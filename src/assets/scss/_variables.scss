@@ -13,9 +13,11 @@ $question-color: $primary-color;
 $quiz-background-color: white;
 $quiz-header-info-color: $primary-color;
 $answer-item-background: transparentize($primary-color, 0.8);
-$answer-border-color: $secondary-color;
+$answer-border-color: transparentize($primary-color, 0.5);
 $answer-text-color: $primary-color;
 
 $hard-color: $primary-color;
 $medium-color: $secondary-color;
 $easy-color: $tertiary-color;
+
+$gap: 5rem;

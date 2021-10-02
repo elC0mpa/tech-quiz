@@ -1,6 +1,10 @@
 <template>
   <div class="quiz-header">
-    <progress-bar v-if="actualQuestion" :width="20" :color="progressBarColor">
+    <progress-bar
+      v-if="actualQuestion"
+      :width="quizPercentage"
+      :color="progressBarColor"
+    >
       <div class="quiz-header__progress-bar-content">
         <div>
           <img
@@ -42,12 +46,17 @@ export default {
     const totalQuestions = computed(() => store.getters.totalQuestions);
     const progressBarColor = computed(() => {
       const color =
-        actualQuestion.value.difficulty === "hard"
+        actualQuestion.value.difficulty === "Hard"
           ? "#4756ca"
-          : actualQuestion.value.difficulty === "medium"
+          : actualQuestion.value.difficulty === "Medium"
           ? "#3186b2"
           : "#0fc9e7";
       return color;
+    });
+    const quizPercentage = computed(() => {
+      const percentage =
+        (actualQuestionCount.value * 100) / totalQuestions.value;
+      return percentage;
     });
     return {
       topic,
@@ -55,6 +64,7 @@ export default {
       totalQuestions,
       actualQuestion,
       progressBarColor,
+      quizPercentage,
     };
   },
 };

@@ -1,6 +1,6 @@
 <template>
   <div class="quiz-header">
-    <progress-bar :width="20" color="orangered">
+    <progress-bar v-if="actualQuestion" :width="20" :color="progressBarColor">
       <div class="quiz-header__progress-bar-content">
         <div>
           <img
@@ -40,7 +40,22 @@ export default {
     const actualQuestionCount = computed(() => store.getters.cuestionCount + 1);
     const actualQuestion = computed(() => store.getters.actualQuestion);
     const totalQuestions = computed(() => store.getters.totalQuestions);
-    return { topic, actualQuestionCount, totalQuestions, actualQuestion };
+    const progressBarColor = computed(() => {
+      const color =
+        actualQuestion.value.difficulty === "hard"
+          ? "#4756ca"
+          : actualQuestion.value.difficulty === "medium"
+          ? "#3186b2"
+          : "#0fc9e7";
+      return color;
+    });
+    return {
+      topic,
+      actualQuestionCount,
+      totalQuestions,
+      actualQuestion,
+      progressBarColor,
+    };
   },
 };
 </script>
@@ -52,7 +67,7 @@ export default {
     justify-content: space-between;
     > div {
       display: flex;
-      align-items: end;
+      align-items: flex-end;
       margin-bottom: 0.5rem;
       :first-child {
         margin-right: 1rem;
@@ -60,6 +75,7 @@ export default {
     }
   }
   &__info {
+    color: $quiz-header-info-color;
     font-size: 2.5rem;
   }
   &__svg {

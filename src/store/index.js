@@ -8,6 +8,7 @@ export default createStore({
     ANSWERS: [],
     ACTUAL_QUESTION: 0,
     TOTAL_QUESTIONS: 0,
+    SELECTED_ANSWER: null,
   },
   mutations: {
     setTopic(state, value) {
@@ -19,8 +20,11 @@ export default createStore({
     setTotalQuestions(state, value) {
       state.TOTAL_QUESTIONS = value;
     },
-    addAnswer(state, answer) {
-      state.ANSWERS.push(answer);
+    setSelectedAnswer(state, value) {
+      state.SELECTED_ANSWER = value;
+    },
+    setActualQuestion(state, value) {
+      state.ACTUAL_QUESTION = value;
     },
   },
   actions: {
@@ -39,6 +43,16 @@ export default createStore({
         }
       });
     },
+    nextQuestion(state) {
+      const id = state.getters.actualQuestion.id;
+      state.state.ANSWERS.push({
+        id,
+        ...state.getters.selectedAnswer,
+      });
+      console.log(state.state.ANSWERS);
+      state.commit("setSelectedAnswer", null);
+      state.commit("setActualQuestion", state.getters.cuestionCount + 1);
+    },
   },
   getters: {
     questions(state) {
@@ -55,6 +69,9 @@ export default createStore({
     },
     cuestionCount(state) {
       return state.ACTUAL_QUESTION;
+    },
+    selectedAnswer(state) {
+      return state.SELECTED_ANSWER;
     },
   },
 });

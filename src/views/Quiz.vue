@@ -2,6 +2,7 @@
   <div class="quiz">
     <quiz-header></quiz-header>
     <quiz-body></quiz-body>
+    <quiz-actions></quiz-actions>
   </div>
 </template>
 
@@ -10,12 +11,14 @@ import { reactive, toRefs } from "@vue/reactivity";
 import { useStore } from "vuex";
 import QuizHeader from "../components/QuizHeader.vue";
 import QuizBody from "../components/QuizBody.vue";
+import QuizActions from "../components/QuizActions.vue";
 
 export default {
   name: "Quiz",
   components: {
     QuizHeader,
     QuizBody,
+    QuizActions,
   },
   setup() {
     const store = useStore();
@@ -32,9 +35,9 @@ export default {
 
 <style lang="scss" scoped>
 .quiz {
-  width: 80vw;
+  height: 100vh;
+  padding: 2rem 15vw;
   margin: 0 auto;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  background: $quiz-background-color;
 }
 </style>

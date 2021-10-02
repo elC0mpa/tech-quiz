@@ -1,11 +1,13 @@
 <template>
-  <div class="answer-item">
+  <div class="answer-item" :class="{ 'is-selected': isSelected }">
     <div class="answer-item__number">{{ number }}</div>
     <div class="answer-item__answer">{{ answer.answer }}</div>
   </div>
 </template>
 
 <script>
+import { computed } from "@vue/reactivity";
+import { useStore } from "vuex";
 export default {
   name: "AnswerItem",
   props: {
@@ -19,7 +21,11 @@ export default {
     },
   },
   setup(props) {
-    return { props };
+    const store = useStore();
+    const isSelected = computed(
+      () => store.getters.selectedAnswer?.answer === props.answer.answer
+    );
+    return { props, isSelected };
   },
 };
 </script>
@@ -47,6 +53,11 @@ export default {
   }
   &__answer {
     margin-left: 2rem;
+  }
+  &.is-selected {
+    background-color: $answer-item-background-selected;
+    color: $answer-text-color-selected;
+    border: 2px solid $answer-border-color-selected;
   }
 }
 </style>

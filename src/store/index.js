@@ -9,6 +9,7 @@ export default createStore({
     ACTUAL_QUESTION: 0,
     TOTAL_QUESTIONS: 0,
     SELECTED_ANSWER: null,
+    IS_LOADING_QUESTIONS: true,
   },
   mutations: {
     setTopic(state, value) {
@@ -26,6 +27,9 @@ export default createStore({
     setActualQuestion(state, value) {
       state.ACTUAL_QUESTION = value;
     },
+    setIsLoadingQuestions(state, value) {
+      state.IS_LOADING_QUESTIONS = value;
+    },
   },
   actions: {
     getQuestions(state) {
@@ -37,6 +41,7 @@ export default createStore({
           );
           state.commit("setQuestions", data);
           state.commit("setTotalQuestions", data.length);
+          state.commit("setIsLoadingQuestions", false);
           resolve(data);
         } catch (error) {
           reject(error);
@@ -70,6 +75,9 @@ export default createStore({
     },
     selectedAnswer(state) {
       return state.SELECTED_ANSWER;
+    },
+    isLoadingQuestions(state) {
+      return state.IS_LOADING_QUESTIONS;
     },
   },
 });

@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import { reactive, toRefs } from "@vue/reactivity";
 import { useStore } from "vuex";
 import QuizHeader from "../components/QuizHeader.vue";
 import QuizBody from "../components/QuizBody.vue";
@@ -22,13 +21,8 @@ export default {
   },
   setup() {
     const store = useStore();
-    const state = reactive({
-      isLoading: true,
-    });
-    store.dispatch("getQuestions").then(() => {
-      state.isLoading = false;
-    });
-    return { ...toRefs(state) };
+    store.dispatch("getQuestions");
+    return {};
   },
 };
 </script>

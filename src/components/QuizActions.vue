@@ -6,7 +6,7 @@
       :disabled="!answerSelected"
       class="quiz-actions__next"
     >
-      Next
+      {{ actualQuestionCount === totalQuestions ? "Finish" : "Next" }}
     </button>
   </div>
 </template>
@@ -14,17 +14,31 @@
 <script>
 import { computed } from "@vue/reactivity";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 export default {
   name: "QuizActions",
   setup() {
     const store = useStore();
+    const router = useRouter();
     const answerSelected = computed(() => {
       return store.getters.selectedAnswer ? true : false;
     });
+    const actualQuestionCount = computed(() => store.getters.cuestionCount + 1);
+    const totalQuestions = computed(() => store.getters.totalQuestions);
     const nextQuestion = () => {
       store.dispatch("nextQuestion");
+      if (actualQuestionCount.value - 1 === totalQuestions.value) {
+        router.push({
+          name: "Score",
+        });
+      }
     };
-    return { answerSelected, nextQuestion };
+    return {
+      answerSelected,
+      nextQuestion,
+      totalQuestions,
+      actualQuestionCount,
+    };
   },
 };
 </script>

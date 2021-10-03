@@ -56,6 +56,13 @@ export default createStore({
       state.commit("setSelectedAnswer", null);
       state.commit("setActualQuestion", state.getters.cuestionCount + 1);
     },
+    skipQuestion(state) {
+      const actualQuestion = state.getters.actualQuestion;
+      const questions = state.getters.questions;
+      questions.splice(state.state.ACTUAL_QUESTION, 1);
+      questions.push(actualQuestion);
+      state.commit("setQuestions", questions);
+    },
   },
   getters: {
     questions(state) {

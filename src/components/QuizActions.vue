@@ -1,6 +1,6 @@
 <template>
   <div class="quiz-actions">
-    <button class="quiz-actions__skip">Skip</button>
+    <button class="quiz-actions__skip" @click="skipQuestion">Skip</button>
     <button
       @click="nextQuestion"
       :disabled="!answerSelected"
@@ -33,11 +33,15 @@ export default {
         });
       }
     };
+    const skipQuestion = () => {
+      store.dispatch("skipQuestion");
+    };
     return {
       answerSelected,
       nextQuestion,
       totalQuestions,
       actualQuestionCount,
+      skipQuestion,
     };
   },
 };

@@ -44,12 +44,10 @@ export default createStore({
       });
     },
     nextQuestion(state) {
-      const id = state.getters.actualQuestion.id;
-      state.state.ANSWERS.push({
-        id,
-        ...state.getters.selectedAnswer,
-      });
-      console.log(state.state.ANSWERS);
+      const actualQuestion = state.getters.actualQuestion;
+      const selectedAnswer = state.getters.selectedAnswer.label;
+      actualQuestion.selected_answer = selectedAnswer;
+      state.state.QUESTIONS[state.ACTUAL_QUESTION] = actualQuestion;
       state.commit("setSelectedAnswer", null);
       state.commit("setActualQuestion", state.getters.cuestionCount + 1);
     },

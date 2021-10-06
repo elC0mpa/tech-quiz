@@ -10,6 +10,7 @@ export default createStore({
     TOTAL_QUESTIONS: 0,
     SELECTED_ANSWER: null,
     IS_LOADING_QUESTIONS: true,
+    CORRECT_ANSWERS_COUNT: 0,
   },
   mutations: {
     setTopic(state, value) {
@@ -29,6 +30,9 @@ export default createStore({
     },
     setIsLoadingQuestions(state, value) {
       state.IS_LOADING_QUESTIONS = value;
+    },
+    setCorrectAnswersCount(state, value) {
+      state.CORRECT_ANSWERS_COUNT = value;
     },
   },
   actions: {
@@ -52,6 +56,15 @@ export default createStore({
       const actualQuestion = state.getters.actualQuestion;
       const selectedAnswer = state.getters.selectedAnswer.label;
       actualQuestion.selected_answer = selectedAnswer;
+      if (
+        actualQuestion.correct_answers[`${selectedAnswer}_correct`] === "true"
+      ) {
+        actualQuestion.is_correct = true;
+        state.commit(
+          "setCorrectAnswersCount",
+          state.getters.correctAnswersCount + 1
+        );
+      }
       state.state.QUESTIONS[state.ACTUAL_QUESTION] = actualQuestion;
       state.commit("setSelectedAnswer", null);
       state.commit("setActualQuestion", state.getters.cuestionCount + 1);
@@ -85,6 +98,9 @@ export default createStore({
     },
     isLoadingQuestions(state) {
       return state.IS_LOADING_QUESTIONS;
+    },
+    correctAnswersCount(state) {
+      return state.CORRECT_ANSWERS_COUNT;
     },
   },
 });

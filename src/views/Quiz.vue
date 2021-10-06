@@ -30,7 +30,7 @@ export default {
 <style lang="scss" scoped>
 .quiz {
   height: 100vh;
-  padding: 2rem 15vw;
+  padding: 2rem $responsive-horizontal-padding;
   margin: 0 auto;
   background: $quiz-background-color;
 }

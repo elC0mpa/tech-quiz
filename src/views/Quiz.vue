@@ -8,9 +8,9 @@
 
 <script>
 import { useStore } from "vuex";
-import QuizHeader from "../components/QuizHeader.vue";
-import QuizBody from "../components/QuizBody.vue";
-import QuizActions from "../components/QuizActions.vue";
+import QuizHeader from "../components/Quiz/QuizHeader.vue";
+import QuizBody from "../components/Quiz/QuizBody.vue";
+import QuizActions from "../components/Quiz/QuizActions.vue";
 
 export default {
   name: "Quiz",

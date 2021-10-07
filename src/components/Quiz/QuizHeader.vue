@@ -5,7 +5,7 @@
         <div>
           <img
             class="quiz-header__svg"
-            :src="require(`../assets/svgs/${topic.toLowerCase()}.svg`)"
+            :src="require(`../../assets/svgs/${topic.toLowerCase()}.svg`)"
           />
           <span class="quiz-header__info">{{ topic }}</span>
         </div>
@@ -34,7 +34,7 @@
 <script>
 import { computed } from "@vue/reactivity";
 import { useStore } from "vuex";
-import ProgressBar from "./ProgressBar.vue";
+import ProgressBar from "../ProgressBar.vue";
 import DifficultyIndicator from "./DifficultyIndicator.vue";
 import { ContentLoader } from "vue-content-loader";
 export default {

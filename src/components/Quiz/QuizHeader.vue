@@ -28,7 +28,7 @@
 <script>
 import { computed } from "@vue/reactivity";
 import { useStore } from "vuex";
-import ProgressBar from "../ProgressBar.vue";
+import ProgressBar from "../Shared/ProgressBar.vue";
 import DifficultyIndicator from "./DifficultyIndicator.vue";
 import SectionIndicator from "../Shared/SectionIndicator.vue";
 import { ContentLoader } from "vue-content-loader";

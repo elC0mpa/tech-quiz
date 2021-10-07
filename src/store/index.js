@@ -67,7 +67,8 @@ export default createStore({
       }
       state.state.QUESTIONS[state.ACTUAL_QUESTION] = actualQuestion;
       state.commit("setSelectedAnswer", null);
-      state.commit("setActualQuestion", state.getters.cuestionCount + 1);
+      state.getters.cuestionCount + 1 !== state.getters.totalQuestions &&
+        state.commit("setActualQuestion", state.getters.cuestionCount + 1);
     },
     skipQuestion(state) {
       const actualQuestion = state.getters.actualQuestion;

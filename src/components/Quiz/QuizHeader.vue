@@ -2,13 +2,7 @@
   <div class="quiz-header">
     <progress-bar :width="quizPercentage" :color="progressBarColor">
       <div class="quiz-header__progress-bar-content">
-        <div>
-          <img
-            class="quiz-header__svg"
-            :src="require(`../../assets/svgs/${topic.toLowerCase()}.svg`)"
-          />
-          <span class="quiz-header__info">{{ topic }}</span>
-        </div>
+        <section-indicator></section-indicator>
         <div>
           <span v-if="!isLoading" class="quiz-header__info"
             >{{ actualQuestionCount }} of {{ totalQuestions }}</span
@@ -36,6 +30,7 @@ import { computed } from "@vue/reactivity";
 import { useStore } from "vuex";
 import ProgressBar from "../ProgressBar.vue";
 import DifficultyIndicator from "./DifficultyIndicator.vue";
+import SectionIndicator from "../Shared/SectionIndicator.vue";
 import { ContentLoader } from "vue-content-loader";
 export default {
   name: "QuizHeader",
@@ -43,6 +38,7 @@ export default {
     ProgressBar,
     DifficultyIndicator,
     ContentLoader,
+    SectionIndicator,
   },
   setup() {
     const store = useStore();
@@ -97,9 +93,6 @@ export default {
   &__info {
     color: $quiz-header-info-color;
     font-size: 2.5rem;
-  }
-  &__svg {
-    height: 3.5rem;
   }
 }
 </style>

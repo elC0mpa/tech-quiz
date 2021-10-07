@@ -41,7 +41,8 @@ export default {
 .site-presentation {
   width: 100vw;
   height: 100vh;
-  background-image: linear-gradient(gray, gray), url("../assets/images/7.jpg");
+  background-image: linear-gradient(gray, gray),
+    url("../../assets/images/7.jpg");
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: cover;

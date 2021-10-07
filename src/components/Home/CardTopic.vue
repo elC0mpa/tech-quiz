@@ -1,12 +1,12 @@
 <template>
   <div
     class="card-topic"
-    :style="`background-image: linear-gradient(gray, gray), url(${require('../assets/images/' +
+    :style="`background-image: linear-gradient(gray, gray), url(${require('../../assets/images/' +
       quiz.backgroundImage)})`"
   >
     <img
       class="card-topic__svg"
-      :src="require(`../assets/svgs/${quiz.topic.toLowerCase()}.svg`)"
+      :src="require(`../../assets/svgs/${quiz.topic.toLowerCase()}.svg`)"
     />
     <p class="card-topic__text">
       {{ quiz.topic }}

@@ -1,5 +1,6 @@
 import Home from "../views/Home.vue";
 import Quiz from "../views/Quiz.vue";
+import Score from "../views/Score.vue";
 
 const routes = [
   {
@@ -11,6 +12,11 @@ const routes = [
     path: "/quiz/",
     name: "Quiz",
     component: Quiz,
+  },
+  {
+    path: "/score/",
+    name: "Score",
+    component: Score,
   },
 ];
 

@@ -26,12 +26,12 @@ export default {
     const actualQuestionCount = computed(() => store.getters.cuestionCount + 1);
     const totalQuestions = computed(() => store.getters.totalQuestions);
     const nextQuestion = () => {
-      store.dispatch("nextQuestion");
       if (actualQuestionCount.value === totalQuestions.value) {
         router.push({
           name: "Score",
         });
       }
+      store.dispatch("nextQuestion");
     };
     const skipQuestion = () => {
       store.dispatch("skipQuestion");

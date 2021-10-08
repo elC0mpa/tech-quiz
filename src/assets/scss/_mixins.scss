@@ -25,3 +25,16 @@
     }
   }
 }
+
+@mixin answer-item-styles {
+  background-color: $answer-item-background;
+  color: $answer-text-color;
+  display: flex;
+  align-items: center;
+  font-size: large;
+  font-weight: bold;
+  border: 2px solid $answer-border-color;
+  min-height: 4rem;
+  border-radius: 1rem;
+  line-height: 1.6;
+}

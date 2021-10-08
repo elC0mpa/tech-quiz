@@ -32,16 +32,8 @@ export default {
 
 <style lang="scss" scoped>
 .answer-item {
-  background-color: $answer-item-background;
-  color: $answer-text-color;
-  display: flex;
-  align-items: center;
-  font-size: large;
-  font-weight: bold;
-  border: 2px solid $answer-border-color;
-  min-height: 4rem;
+  @include answer-item-styles;
   margin-top: $gap;
-  border-radius: 1rem;
   cursor: pointer;
   &__number {
     border-right: 2px solid $answer-border-color;
@@ -52,7 +44,7 @@ export default {
     min-width: 3rem;
   }
   &__answer {
-    margin-left: 2rem;
+    padding: 0.5rem 2rem;
   }
   &.is-selected {
     background-color: $answer-item-background-selected;

@@ -1,6 +1,12 @@
 <template>
   <div class="quiz-actions">
-    <button class="quiz-actions__skip" @click="skipQuestion">Skip</button>
+    <button
+      class="quiz-actions__skip"
+      :disabled="actualQuestionCount === totalQuestions"
+      @click="skipQuestion"
+    >
+      Skip
+    </button>
     <button
       @click="nextQuestion"
       :disabled="!answerSelected"
@@ -15,6 +21,7 @@
 import { computed } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
+import { onBeforeUnmount } from "@vue/runtime-core";
 export default {
   name: "QuizActions",
   setup() {
@@ -36,6 +43,20 @@ export default {
     const skipQuestion = () => {
       store.dispatch("skipQuestion");
     };
+    const keyPressed = (e) => {
+      if (e.key === "Enter" && answerSelected.value) {
+        nextQuestion();
+      } else if (
+        e.key === "Escape" &&
+        actualQuestionCount.value !== totalQuestions.value
+      ) {
+        skipQuestion();
+      }
+    };
+    window.addEventListener("keydown", (e) => keyPressed(e));
+    onBeforeUnmount(() =>
+      window.removeEventListener("keydown", (e) => keyPressed(e))
+    );
     return {
       answerSelected,
       nextQuestion,

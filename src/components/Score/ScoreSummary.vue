@@ -2,7 +2,7 @@
   <div class="score-summary">
     <progress-bar :width="quizScore" :color="progressBarColor">
       <div class="score-summary__progress-bar-content">
-        <section-indicator></section-indicator>
+        <section-indicator :is-in-score="true"></section-indicator>
       </div>
     </progress-bar>
     <div class="score-summary__info-container">

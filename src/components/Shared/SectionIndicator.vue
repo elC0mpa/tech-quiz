@@ -1,5 +1,5 @@
 <template>
-  <span class="section_indicator">
+  <span class="section_indicator" :class="{ 'is-in-score': isInScore }">
     <img
       class="section_indicator__svg"
       :src="require(`../../assets/svgs/${topic.toLowerCase()}.svg`)"
@@ -13,10 +13,16 @@ import { computed } from "@vue/reactivity";
 import { useStore } from "vuex";
 export default {
   name: "SectionIndicator",
-  setup() {
+  props: {
+    isInScore: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  setup(props) {
     const store = useStore();
     const topic = computed(() => store.getters.topic);
-    return { topic };
+    return { topic, props };
   },
 };
 </script>
@@ -26,13 +32,16 @@ export default {
   display: flex;
   align-items: flex-end;
   margin-bottom: 0.5rem;
+  color: $quiz-header-info-color;
   &__info {
-    color: $quiz-header-info-color;
     font-size: 2.5rem;
     margin-left: 1rem;
   }
   &__svg {
     height: 3.5rem;
+  }
+  &.is-in-score {
+    color: black;
   }
 }
 </style>

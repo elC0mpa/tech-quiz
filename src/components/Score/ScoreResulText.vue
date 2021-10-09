@@ -1,5 +1,5 @@
 <template>
-  <div class="score-result-text">
+  <div class="score-result-text" :class="{ 'is-loading': isLoading }">
     <p class="score-result-text__main-text">
       {{ mainText }}
     </p>
@@ -15,37 +15,36 @@
 </template>
 
 <script>
-import { computed, reactive } from "@vue/reactivity";
+import { computed } from "@vue/reactivity";
 import { useStore } from "vuex";
 export default {
   name: "ScoreResultText",
   setup() {
     const store = useStore();
-    const state = reactive({
-      totalQuestions: store.getters.totalQuestions,
-      correctAnswers: store.getters.correctAnswersCount,
-      quizScore:
-        (store.getters.correctAnswersCount / store.getters.totalQuestions) *
-        100,
+    const quizScore = computed(() => {
+      return store.getters.quizScore;
+    });
+    const isLoading = computed(() => {
+      return store.getters.isLoading;
     });
     const mainText = computed(() => {
       const text =
-        state.quizScore < 70
+        quizScore.value < 70
           ? "Don't give up!! 📖"
-          : state.quizScore < 90
+          : quizScore.value < 90
           ? "Well done 👍"
           : "Excellent 💡";
       return text;
     });
     const secondaryText = computed(() => {
       const array =
-        state.quizScore < 70
+        quizScore.value < 70
           ? [
               "You need at least",
               "70 points to pass the test.",
               "Just keep working!!",
             ]
-          : state.quizScore < 90
+          : quizScore.value < 90
           ? [
               "Don´t relax,",
               "if you get more than 90 points",
@@ -58,13 +57,15 @@ export default {
             ];
       return array;
     });
-    return { mainText, secondaryText };
+    return { mainText, secondaryText, isLoading };
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .score-result-text {
+  transition: all 1s;
+  transform: scale(1);
   &__main-text {
     font-size: xxx-large;
     font-weight: bold;
@@ -75,6 +76,9 @@ export default {
   }
   &__secondary-bold-text {
     font-weight: bold;
+  }
+  &.is-loading {
+    transform: scale(0);
   }
 }
 </style>

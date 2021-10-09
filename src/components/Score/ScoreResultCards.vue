@@ -10,7 +10,10 @@
       Score
     </div>
     <div class="score-result-cards__correct-answers">
-      <p class="score-result-cards__correct-answers-main">
+      <p
+        class="score-result-cards__correct-answers-main"
+        :class="{ 'is-loading': isLoading }"
+      >
         {{ correctAnswers }} / {{ totalQuestions }}
       </p>
       Correct answers
@@ -32,7 +35,10 @@ export default {
     const quizScore = computed(() => {
       return store.getters.quizScore;
     });
-    return { ...toRefs(state), quizScore };
+    const isLoading = computed(() => {
+      return store.getters.isLoading;
+    });
+    return { ...toRefs(state), quizScore, isLoading };
   },
 };
 </script>
@@ -65,6 +71,11 @@ export default {
     &-main {
       font-size: xx-large;
       font-weight: bold;
+      transform: scale(1);
+      transition: all 1s;
+      &.is-loading {
+        transform: scale(0.1);
+      }
     }
   }
   &.is-passed-quizz {

@@ -1,5 +1,8 @@
 <template>
-  <div class="score-result-cards">
+  <div
+    class="score-result-cards"
+    :class="{ 'is-passed-quizz': quizScore >= 70 }"
+  >
     <div class="score-result-cards__score">
       <p class="score-result-cards__score-main">
         {{ quizScore.toFixed(1) }}
@@ -16,7 +19,7 @@
 </template>
 
 <script>
-import { reactive, toRefs } from "@vue/reactivity";
+import { computed, reactive, toRefs } from "@vue/reactivity";
 import { useStore } from "vuex";
 export default {
   name: "ScoreResultCards",
@@ -25,18 +28,19 @@ export default {
     const state = reactive({
       totalQuestions: store.getters.totalQuestions,
       correctAnswers: store.getters.correctAnswersCount,
-      quizScore:
-        (store.getters.correctAnswersCount / store.getters.totalQuestions) *
-        100,
     });
-    return { ...toRefs(state) };
+    const quizScore = computed(() => {
+      return store.getters.quizScore;
+    });
+    return { ...toRefs(state), quizScore };
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .score-result-cards {
-  background-color: $primary-color;
+  background: transparentize($not-passed-color, 0.8);
+  color: $not-passed-color;
   display: flex;
   align-items: center;
   border-radius: 2rem;
@@ -45,7 +49,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: white;
+    // color: white;
     padding: 2rem 3rem;
     font-size: large;
     min-width: 18rem;
@@ -62,6 +66,10 @@ export default {
       font-size: xx-large;
       font-weight: bold;
     }
+  }
+  &.is-passed-quizz {
+    background: transparentize($passed-color, 0.8);
+    color: $passed-color;
   }
 }
 </style>

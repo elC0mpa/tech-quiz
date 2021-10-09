@@ -6,7 +6,7 @@
       </div>
     </progress-bar>
     <div class="score-summary__info-container">
-      <score-result-text :quiz-score="quizScore"></score-result-text>
+      <score-result-text></score-result-text>
       <score-result-cards></score-result-cards>
     </div>
   </div>
@@ -17,7 +17,7 @@ import SectionIndicator from "../Shared/SectionIndicator.vue";
 import ProgressBar from "../Shared/ProgressBar.vue";
 import ScoreResultText from "../Score/ScoreResulText.vue";
 import ScoreResultCards from "../Score/ScoreResultCards.vue";
-import { computed, reactive, toRefs } from "@vue/reactivity";
+import { computed } from "@vue/reactivity";
 import { useStore } from "vuex";
 export default {
   components: {
@@ -29,25 +29,17 @@ export default {
   name: "ScoreSummary",
   setup() {
     const store = useStore();
-    const state = reactive({
-      totalQuestions: store.getters.totalQuestions,
-      correctAnswers: store.getters.correctAnswersCount,
-      quizScore:
-        (store.getters.correctAnswersCount / store.getters.totalQuestions) *
-        100,
+
+    const quizScore = computed(() => {
+      return store.getters.quizScore;
     });
 
     const progressBarColor = computed(() => {
-      const color =
-        state.quizScore < 70
-          ? "red"
-          : state.quizScore < 90
-          ? "#4756ca"
-          : "#0fc9e7";
+      const color = quizScore.value < 70 ? "red" : "green";
       return color;
     });
 
-    return { ...toRefs(state), progressBarColor };
+    return { progressBarColor, quizScore };
   },
 };
 </script>

@@ -15,34 +15,37 @@
 </template>
 
 <script>
-import { computed } from "@vue/reactivity";
+import { computed, reactive } from "@vue/reactivity";
+import { useStore } from "vuex";
 export default {
   name: "ScoreResultText",
-  props: {
-    quizScore: {
-      type: Number,
-      required: true,
-    },
-  },
-  setup(props) {
+  setup() {
+    const store = useStore();
+    const state = reactive({
+      totalQuestions: store.getters.totalQuestions,
+      correctAnswers: store.getters.correctAnswersCount,
+      quizScore:
+        (store.getters.correctAnswersCount / store.getters.totalQuestions) *
+        100,
+    });
     const mainText = computed(() => {
       const text =
-        props.quizScore < 70
+        state.quizScore < 70
           ? "Don't give up!! 📖"
-          : props.quizScore < 90
+          : state.quizScore < 90
           ? "Well done 👍"
           : "Excellent 💡";
       return text;
     });
     const secondaryText = computed(() => {
       const array =
-        props.quizScore < 70
+        state.quizScore < 70
           ? [
               "You need at least",
               "70 points to pass the test.",
               "Just keep working!!",
             ]
-          : props.quizScore < 90
+          : state.quizScore < 90
           ? [
               "Don´t relax,",
               "if you get more than 90 points",

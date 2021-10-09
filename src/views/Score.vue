@@ -8,6 +8,8 @@
 <script>
 import ScoreHeader from "../components/Score/ScoreSummary.vue";
 import ScoreBody from "../components/Score/ScoreBody.vue";
+import { useStore } from "vuex";
+
 export default {
   name: "Score",
   components: {
@@ -15,6 +17,8 @@ export default {
     ScoreBody,
   },
   setup() {
+    const store = useStore();
+    store.dispatch("calculateQuizScore");
     return {};
   },
 };

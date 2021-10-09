@@ -1,11 +1,22 @@
 <template>
-  <div class="question-answer" :class="{ 'is-correct': question.is_correct }">
-    <p class="question-answer__question">{{ question.question }}</p>
-    <div class="question-answer__answer-container">
+  <div class="question-answer">
+    <p
+      class="question-answer__question"
+      :class="{ 'is-correct': question.is_correct }"
+    >
+      {{ question.question }}
+    </p>
+    <div
+      class="question-answer__answer-container"
+      :class="{ 'is-correct': question.is_correct }"
+    >
       <div class="question-answer__answer">
         {{ question.answers[question.selected_answer] }}
       </div>
-      <div class="question-answer__status">
+      <div
+        class="question-answer__status"
+        :class="{ 'is-correct': question.is_correct }"
+      >
         <img
           :src="
             require(`../../assets/svgs/${
@@ -43,11 +54,22 @@ export default {
   &__question {
     font-size: x-large;
     font-weight: bold;
-    color: $question-color;
+    color: $not-passed-color;
+    &.is-correct {
+      color: $passed-color;
+    }
   }
   &__answer-container {
     @include answer-item-styles;
+    background: transparentize($not-passed-color, 0.8);
+    color: $not-passed-color;
+    border: 2px solid $not-passed-color;
     justify-content: space-between;
+    &.is-correct {
+      color: $passed-color;
+      border: 2px solid $passed-color;
+      background: transparentize($passed-color, 0.8);
+    }
   }
   &__answer {
     padding: 0.5rem 2rem;
@@ -57,9 +79,12 @@ export default {
     display: flex;
     align-items: center;
     padding: 0 2rem;
-    border-left: 2px solid $answer-border-color;
+    border-left: 2px solid $not-passed-color;
     > img {
       height: 2rem;
+    }
+    &.is-correct {
+      border-left: 2px solid $passed-color;
     }
   }
 }

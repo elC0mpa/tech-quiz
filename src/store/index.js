@@ -11,6 +11,8 @@ export default createStore({
     SELECTED_ANSWER: null,
     IS_LOADING_QUESTIONS: true,
     CORRECT_ANSWERS_COUNT: 0,
+    TIMER_ID: null,
+    QUIZ_SCORE: 0,
   },
   mutations: {
     setTopic(state, value) {
@@ -33,6 +35,12 @@ export default createStore({
     },
     setCorrectAnswersCount(state, value) {
       state.CORRECT_ANSWERS_COUNT = value;
+    },
+    setQuizScore(state, value) {
+      state.QUIZ_SCORE = value;
+    },
+    setTimerId(state, value) {
+      state.TIMER_ID = value;
     },
   },
   actions: {
@@ -77,6 +85,21 @@ export default createStore({
       questions.push(actualQuestion);
       state.commit("setQuestions", questions);
     },
+    calculateQuizScore({ commit, getters }) {
+      commit(
+        "setTimerId",
+        setInterval(() => {
+          const quizScore =
+            (getters.correctAnswersCount / getters.totalQuestions) * 100;
+          commit("setQuizScore", getters.quizScore + 10);
+          if (getters.quizScore >= quizScore) {
+            commit("setQuizScore", quizScore);
+            clearInterval(getters.timerId);
+            commit("setTimerId", null);
+          }
+        }, 450)
+      );
+    },
   },
   getters: {
     questions(state) {
@@ -102,6 +125,12 @@ export default createStore({
     },
     correctAnswersCount(state) {
       return state.CORRECT_ANSWERS_COUNT;
+    },
+    quizScore(state) {
+      return state.QUIZ_SCORE;
+    },
+    timerId(state) {
+      return state.TIMER_ID;
     },
   },
 });

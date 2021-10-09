@@ -9,10 +9,12 @@ export default createStore({
     ACTUAL_QUESTION: 0,
     TOTAL_QUESTIONS: 0,
     SELECTED_ANSWER: null,
-    IS_LOADING_QUESTIONS: true,
+    IS_LOADING: true,
     CORRECT_ANSWERS_COUNT: 0,
     TIMER_ID: null,
-    QUIZ_SCORE: 0,
+    ANIMATION: {
+      score: 0,
+    },
   },
   mutations: {
     setTopic(state, value) {
@@ -30,14 +32,14 @@ export default createStore({
     setActualQuestion(state, value) {
       state.ACTUAL_QUESTION = value;
     },
-    setIsLoadingQuestions(state, value) {
-      state.IS_LOADING_QUESTIONS = value;
+    setIsLoading(state, value) {
+      state.IS_LOADING = value;
     },
     setCorrectAnswersCount(state, value) {
       state.CORRECT_ANSWERS_COUNT = value;
     },
     setQuizScore(state, value) {
-      state.QUIZ_SCORE = value;
+      state.ANIMATION.score = value;
     },
     setTimerId(state, value) {
       state.TIMER_ID = value;
@@ -53,7 +55,7 @@ export default createStore({
           );
           state.commit("setQuestions", data);
           state.commit("setTotalQuestions", data.length);
-          state.commit("setIsLoadingQuestions", false);
+          state.commit("setIsLoading", false);
           resolve(data);
         } catch (error) {
           reject(error);
@@ -85,19 +87,21 @@ export default createStore({
       questions.push(actualQuestion);
       state.commit("setQuestions", questions);
     },
-    calculateQuizScore({ commit, getters }) {
+    startScoreAnimation({ commit, getters }) {
+      commit("setIsLoading", true);
       commit(
         "setTimerId",
         setInterval(() => {
           const quizScore =
             (getters.correctAnswersCount / getters.totalQuestions) * 100;
-          commit("setQuizScore", getters.quizScore + 10);
+          commit("setQuizScore", getters.quizScore + 1);
           if (getters.quizScore >= quizScore) {
             commit("setQuizScore", quizScore);
             clearInterval(getters.timerId);
             commit("setTimerId", null);
+            commit("setIsLoading", false);
           }
-        }, 450)
+        }, 50)
       );
     },
   },
@@ -120,14 +124,14 @@ export default createStore({
     selectedAnswer(state) {
       return state.SELECTED_ANSWER;
     },
-    isLoadingQuestions(state) {
-      return state.IS_LOADING_QUESTIONS;
+    isLoading(state) {
+      return state.IS_LOADING;
     },
     correctAnswersCount(state) {
       return state.CORRECT_ANSWERS_COUNT;
     },
     quizScore(state) {
-      return state.QUIZ_SCORE;
+      return state.ANIMATION.score;
     },
     timerId(state) {
       return state.TIMER_ID;

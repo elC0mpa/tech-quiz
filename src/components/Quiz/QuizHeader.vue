@@ -46,7 +46,7 @@ export default {
     const actualQuestionCount = computed(() => store.getters.cuestionCount + 1);
     const actualQuestion = computed(() => store.getters.actualQuestion);
     const totalQuestions = computed(() => store.getters.totalQuestions);
-    const isLoading = computed(() => store.getters.isLoadingQuestions);
+    const isLoading = computed(() => store.getters.isLoading);
     const progressBarColor = computed(() => {
       const color = isLoading.value
         ? "gray"

@@ -43,7 +43,7 @@ export default {
   setup() {
     const store = useStore();
     const actualQuestion = computed(() => store.getters.actualQuestion);
-    const isLoading = computed(() => store.getters.isLoadingQuestions);
+    const isLoading = computed(() => store.getters.isLoading);
     const answers = computed(() => {
       const answers = [];
       Object.keys(actualQuestion.value.answers).forEach((label) => {

@@ -18,7 +18,7 @@ export default {
   },
   setup() {
     const store = useStore();
-    store.dispatch("calculateQuizScore");
+    store.dispatch("startScoreAnimation");
     return {};
   },
 };

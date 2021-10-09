@@ -48,6 +48,7 @@ export default {
   &__text {
     font-size: 2.5rem;
     color: $topic-text-color;
+    font-weight: bold;
   }
 }
 </style>

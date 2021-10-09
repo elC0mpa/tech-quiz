@@ -68,7 +68,7 @@ export default {
     font-size: xx-large;
   }
   &__button-container {
-    margin-top: 2rem;
+    margin-top: $gap;
     display: flex;
     justify-content: center;
   }
@@ -76,7 +76,8 @@ export default {
     width: 100%;
     max-width: 25rem;
     margin: 0 auto;
-    background-color: transparentize($color: white, $amount: 0.3);
+    background-color: $secondary-color;
+    color: $light-color;
     text-transform: uppercase;
   }
 }

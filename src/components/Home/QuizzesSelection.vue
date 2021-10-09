@@ -84,17 +84,18 @@ export default {
 .quizzes-selection {
   width: 100vw;
   height: 100vh;
-  margin-top: 2rem;
+  margin-top: $gap;
   &__main-text {
-    font-size: 3.5rem;
+    font-size: xxx-large;
     text-align: center;
+    color: black;
   }
   &__container {
     width: 80%;
-    margin: 2rem auto 0 auto;
+    margin: $gap auto 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2.5rem;
+    gap: $gap;
   }
 }
 </style>

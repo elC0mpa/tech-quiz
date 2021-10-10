@@ -9,12 +9,10 @@
         </span>
       </h1>
       <div class="site-presentation__button-container">
-        <button
-          class="site-presentation__button basic-button"
+        <real-button
+          text="Take a quiz"
           @click="scrollToQuizzesSection"
-        >
-          Take a quiz
-        </button>
+        ></real-button>
       </div>
     </div>
   </div>
@@ -22,8 +20,12 @@
 
 <script>
 import { reactive, toRefs } from "@vue/reactivity";
+import RealButton from "../Shared/RealButton.vue";
 export default {
   name: "SitePresentation",
+  components: {
+    RealButton,
+  },
   setup() {
     const data = reactive({});
     const scrollToQuizzesSection = () => {
@@ -71,14 +73,6 @@ export default {
     margin-top: $gap;
     display: flex;
     justify-content: center;
-  }
-  &__button {
-    width: 100%;
-    max-width: 25rem;
-    margin: 0 auto;
-    background-color: $secondary-color;
-    color: $light-color;
-    text-transform: uppercase;
   }
 }
 </style>

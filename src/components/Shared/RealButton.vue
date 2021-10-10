@@ -1,8 +1,22 @@
 <template>
   <button class="real-button">
-    <span class="real-button__shadow"></span>
-    <span class="real-button__edge"></span>
-    <span class="real-button__front"> {{ text }} </span>
+    <span
+      class="real-button__shadow"
+      :style="`background: 
+      ${shadowColor}`"
+    ></span>
+    <span
+      class="real-button__edge"
+      :style="`background: 
+      ${edgeColor}`"
+    ></span>
+    <span
+      class="real-button__front"
+      :style="`background: 
+      ${buttonColor}; color: ${textColor}`"
+    >
+      {{ text }}
+    </span>
   </button>
 </template>
 
@@ -13,6 +27,22 @@ export default {
     text: {
       type: String,
       required: true,
+    },
+    shadowColor: {
+      type: String,
+      default: "transparent",
+    },
+    edgeColor: {
+      type: String,
+      default:
+        "linear-gradient(to left,#4756ca 0%,#3186b2 8%,#3186b2 92%,#4756ca 100%)",
+    },
+    buttonColor: {
+      type: String,
+      default: "#0fc9e7",
+    },
+    textColor: {
+      default: "white",
     },
   },
   setup(props) {
@@ -37,7 +67,6 @@ export default {
     width: 100%;
     height: 100%;
     border-radius: 12px;
-    background: $secondary-color;
     will-change: transform;
     transform: translateY(2px);
     transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
@@ -57,13 +86,6 @@ export default {
     width: 100%;
     height: 100%;
     border-radius: 12px;
-    background: linear-gradient(
-      to left,
-      $primary-color 0%,
-      $secondary-color 8%,
-      $secondary-color 92%,
-      $primary-color 100%
-    );
   }
   &__front {
     display: block;
@@ -73,9 +95,8 @@ export default {
     font-size: 2rem;
     font-weight: bold;
     color: white;
-    background: $tertiary-color;
     will-change: transform;
-    transform: translateY(-6px);
+    transform: translateY(-7px);
     transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
     &:hover {
       transform: translateY(-8px);

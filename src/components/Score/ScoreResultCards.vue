@@ -50,9 +50,9 @@ export default {
   display: flex;
   align-items: center;
   border-radius: 2rem;
-  order: -1;
   @include responsive(small-bp) {
     max-width: 34rem;
+    order: -1;
   }
   &__score,
   &__correct-answers {

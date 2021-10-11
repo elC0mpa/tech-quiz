@@ -25,6 +25,7 @@ export default {
     const router = useRouter();
     const topic = store.getters.topic;
     if (!topic) {
+      store.dispatch("resetState");
       router.push({
         name: "Home",
       });

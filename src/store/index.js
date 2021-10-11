@@ -5,11 +5,10 @@ export default createStore({
   state: {
     TOPIC: "",
     QUESTIONS: [],
-    ANSWERS: [],
     ACTUAL_QUESTION: 0,
     TOTAL_QUESTIONS: 0,
     SELECTED_ANSWER: null,
-    IS_LOADING: true,
+    IS_LOADING: false,
     CORRECT_ANSWERS_COUNT: 0,
     TIMER_ID: null,
     ANIMATION: {
@@ -50,6 +49,7 @@ export default createStore({
       // eslint-disable-next-line no-async-promise-executor
       return new Promise(async (resolve, reject) => {
         try {
+          state.commit("setIsLoading", true);
           const { data } = await axios.get(
             `questions?limit=15&tags=${state.state.TOPIC.toLowerCase()}`
           );
@@ -103,6 +103,18 @@ export default createStore({
           }
         }, 50)
       );
+    },
+    resetState({ commit }) {
+      commit("setTopic", "");
+      commit("setQuestions", []);
+      commit("setAnswers", []);
+      commit("setActualQuestion", 0);
+      commit("setSelectedAnswer", null);
+      commit("setIsLoading", false);
+      commit("setIsLoading", false);
+      commit("setCorrectAnswersCount", 0);
+      commit("setTimerId", null);
+      commit("setQuizScore", 0);
     },
   },
   getters: {

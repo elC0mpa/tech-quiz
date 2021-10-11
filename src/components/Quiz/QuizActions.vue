@@ -75,6 +75,7 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding-bottom: $gap;
   > button {
     width: 12rem;
     height: 5rem;

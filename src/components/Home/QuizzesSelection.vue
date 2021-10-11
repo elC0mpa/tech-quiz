@@ -83,8 +83,8 @@ export default {
 <style lang="scss" scoped>
 .quizzes-selection {
   width: 100vw;
-  height: 100vh;
   margin-top: $gap;
+  margin-bottom: $gap;
   &__main-text {
     font-size: xxx-large;
     text-align: center;
@@ -96,6 +96,14 @@ export default {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: $gap;
+    @include responsive(large-bp) {
+      width: 90%;
+    }
+    @include responsive(medium-bp) {
+      width: 95%;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      column-gap: 0;
+    }
   }
 }
 </style>

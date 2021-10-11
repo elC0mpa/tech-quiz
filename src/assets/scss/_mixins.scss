@@ -1,26 +1,26 @@
 @mixin responsive($breakpoint) {
   @if $breakpoint == smallest-bp {
-    @media (max-width: 440px) {
+    @media (max-width: 640px) {
       @content;
     }
   }
   @if $breakpoint == small-bp {
-    @media (max-width: 530px) {
+    @media (max-width: 768px) {
       @content;
     }
   }
   @if $breakpoint == medium-bp {
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
       @content;
     }
   }
   @if $breakpoint == large-bp {
-    @media (max-width: 1050px) {
+    @media (max-width: 1280px) {
       @content;
     }
   }
   @if $breakpoint == largest-bp {
-    @media (max-width: 1200px) {
+    @media (max-width: 1536px) {
       @content;
     }
   }
@@ -37,4 +37,17 @@
   min-height: 4rem;
   border-radius: 1rem;
   line-height: 1.6;
+}
+
+@mixin section-styles {
+  height: 100vh;
+  padding: 2rem $responsive-horizontal-padding;
+  margin: 0 auto;
+  background: $quiz-background-color;
+  @include responsive(large-bp) {
+    padding: 2rem $responsive-horizontal-padding-medium;
+  }
+  @include responsive(medium-bp) {
+    padding: 2rem $responsive-horizontal-padding-small;
+  }
 }

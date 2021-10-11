@@ -50,6 +50,10 @@ export default {
   display: flex;
   align-items: center;
   border-radius: 2rem;
+  order: -1;
+  @include responsive(small-bp) {
+    max-width: 34rem;
+  }
   &__score,
   &__correct-answers {
     display: flex;
@@ -59,6 +63,7 @@ export default {
     padding: 2rem 3rem;
     font-size: large;
     min-width: 18rem;
+    text-align: center;
   }
   &__score {
     border-right: 2px solid white;

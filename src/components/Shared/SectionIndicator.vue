@@ -30,7 +30,6 @@ export default {
     const router = useRouter();
     const topic = computed(() => store.getters.topic);
     const goHome = () => {
-      store.dispatch("resetState");
       router.push({
         name: "Home",
       });
@@ -49,6 +48,9 @@ export default {
   &__info {
     font-size: 2.5rem;
     margin-left: 1rem;
+    @include responsive(smallest-bp) {
+      display: none;
+    }
   }
   &__svg {
     height: 3.5rem;

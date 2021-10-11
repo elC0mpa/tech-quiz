@@ -51,6 +51,12 @@ export default {
     display: flex;
     align-items: stretch;
     justify-content: space-between;
+    @include responsive(small-bp) {
+      height: 40rem;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
 }
 </style>

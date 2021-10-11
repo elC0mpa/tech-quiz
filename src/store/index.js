@@ -107,7 +107,6 @@ export default createStore({
     resetState({ commit }) {
       commit("setTopic", "");
       commit("setQuestions", []);
-      commit("setAnswers", []);
       commit("setActualQuestion", 0);
       commit("setSelectedAnswer", null);
       commit("setIsLoading", false);

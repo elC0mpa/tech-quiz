@@ -62,6 +62,7 @@ export default {
 
 <style lang="scss" scoped>
 .score-body {
+  padding-bottom: $gap;
   &__placeholders-container {
     > * {
       margin-top: $gap;

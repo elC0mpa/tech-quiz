@@ -26,9 +26,6 @@ export default {
 
 <style lang="scss" scoped>
 .score {
-  height: 100vh;
-  padding: 2rem $responsive-horizontal-padding;
-  margin: 0 auto;
-  background: $quiz-background-color;
+  @include section-styles;
 }
 </style>
